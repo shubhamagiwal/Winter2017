@@ -29,6 +29,29 @@ public class evenOdd {
 	
 		
 	}
+	
+	public void evenOddWithSpaceOptimisation(ArrayList<Integer>array) {
+		int evenIndex=0;
+		int oddIndex=array.size()-1;
+		while(evenIndex<oddIndex) {
+			if(array.get(evenIndex)%2==0) {
+				// Stay in the same position
+				evenIndex++;
+			}else {
+				int evenIndexValue=array.get(evenIndex);
+				int oddIndexValue=array.get(oddIndex);
+				array.set(oddIndex, evenIndexValue);
+				array.set(evenIndex,oddIndexValue);
+				oddIndex--;
+			}
+		}
+		
+		// Print the ArrayList
+		System.out.println("Reordered Array");
+		for(int i=0;i<array.size();i++) {
+			System.out.println(array.get(i));
+		}
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -41,7 +64,8 @@ public class evenOdd {
 			arr.add(user_input.nextInt());
 		}
 		evenOdd eo=new evenOdd();
-		eo.evenOddWithoutMemoryOptimisation(arr);
+//		eo.evenOddWithoutMemoryOptimisation(arr);
+		eo.evenOddWithSpaceOptimisation(arr);
 		
 		
 	}
